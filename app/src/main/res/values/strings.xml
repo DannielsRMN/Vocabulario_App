@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">VocabularioApp</string>
+
+    // Main Activity
+    <string name="textoLog">Bienvenidos, por favor inicie sesión</string>
+    <string name="correoHint">Correo Electrónico</string>
+    <string name="contraHint">Contraseña</string>
+    <string name="btnLogin">Iniciar Sesión</string>
+    <string name="btnRegister">Registrarse</string>
+
+
+</resources>
