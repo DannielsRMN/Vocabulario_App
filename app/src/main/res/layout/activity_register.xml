@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RegisterActivity">
+
+    <EditText
+        android:id="@+id/rgCorreoElectronico"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/rgCorreoElectronico"
+        android:inputType="text"
+        app:layout_constraintBottom_toTopOf="@+id/rgContrasena"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rgFechaNacimiento"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <TextView
+        android:id="@+id/rgText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/rgTexto"
+        app:layout_constraintBottom_toTopOf="@+id/rgNombre"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <EditText
+        android:id="@+id/rgFechaNacimiento"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/rgFechaNacimiento"
+        android:inputType="date"
+        app:layout_constraintBottom_toTopOf="@+id/rgCorreoElectronico"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rgApellidos"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <Button
+        android:id="@+id/btnRegistrar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/rgRegistrar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rgRol"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <EditText
+        android:id="@+id/rgApellidos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/rgApellidos"
+        android:inputType="text"
+        app:layout_constraintBottom_toTopOf="@+id/rgFechaNacimiento"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rgNombre"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <EditText
+        android:id="@+id/rgNombre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/rgNombres"
+        android:inputType="text"
+        app:layout_constraintBottom_toTopOf="@+id/rgApellidos"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rgText"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <EditText
+        android:id="@+id/rgContrasena"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/rgContrasena"
+        android:inputType="textPassword"
+        app:layout_constraintBottom_toTopOf="@+id/rgRol"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rgCorreoElectronico"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <Spinner
+        android:id="@+id/rgRol"
+        android:layout_width="240dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/btnRegistrar"
+        app:layout_constraintTop_toBottomOf="@+id/rgContrasena"
+        app:layout_constraintVertical_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

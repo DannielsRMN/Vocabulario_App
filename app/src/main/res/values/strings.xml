@@ -8,5 +8,17 @@
     <string name="btnLogin">Iniciar Sesión</string>
     <string name="btnRegister">Registrarse</string>
 
+    // Register Activity
+    <string name="rgTexto">Ingrese sus datos, por favor</string>
+    <string name="rgNombres">Nombres</string>
+    <string name="rgApellidos">Apellidos</string>
+    <string name="rgFechaNacimiento">Fecha de Nacimiento</string>
+    <string name="rgCorreoElectronico">Correo Electrónico</string>
+    <string name="rgContrasena">Contraseña</string>
+    <string name="rgRegistrar">Registrar</string>
 
+    <string-array name="roles">
+        <item>Aprendiz</item>
+        <item>Administrador</item>
+    </string-array>
 </resources>
