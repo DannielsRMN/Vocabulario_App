@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/flascards"
+        android:title="Flashcars"
+        app:showAsAction="always"
+        />
+
+    <item
+        android:id="@+id/exercices"
+        android:title="Exercices"
+        app:showAsAction="always"
+        />
+
+    <item
+        android:id="@+id/pronunciation"
+        android:title="Pronunciacion"
+        app:showAsAction="never"
+        />
+
+    <item
+        android:id="@+id/cuenta"
+        android:title="Cuenta"
+        app:showAsAction="never"
+        />
+
+</menu>
