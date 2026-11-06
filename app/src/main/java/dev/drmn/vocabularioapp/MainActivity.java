@@ -1,6 +1,9 @@
 package dev.drmn.vocabularioapp;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,6 +12,8 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
+
+    Button btn1, btn2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +24,25 @@ public class MainActivity extends AppCompatActivity {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
+        });
+
+        btn1 = findViewById(R.id.registrarse);
+        btn2 = findViewById(R.id.iniciarSesion);
+
+        btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i1 = new Intent(MainActivity.this, RegisterActivity.class);
+                startActivity(i1);
+            }
+        });
+
+        btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i2 = new Intent(MainActivity.this, HomeActivity.class);
+                startActivity(i2);
+            }
         });
     }
 }
