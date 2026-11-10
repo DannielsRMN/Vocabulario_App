@@ -26,4 +26,10 @@
         app:showAsAction="never"
         />
 
+    <item
+        android:id="@+id/CerrarSesion"
+        android:title="Cerrar Sesión"
+        app:showAsAction="never"
+        />
+
 </menu>

@@ -58,6 +58,11 @@ public class HomeActivity extends AppCompatActivity {
             Toast.makeText(this, "Cuenta", LENGTH_LONG).show();
         }
 
+        if (item.getTitle().equals("Cerrar Sesión")){
+            Toast.makeText(this, "Cerrando Sesión", LENGTH_LONG).show();
+            finish();
+        }
+
         return super.onOptionsItemSelected(item);
     }
 }
