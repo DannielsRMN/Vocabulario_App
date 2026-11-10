@@ -2,6 +2,7 @@ package dev.drmn.vocabularioapp;
 
 import static android.widget.Toast.LENGTH_LONG;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -43,7 +44,8 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getTitle().equals("Flashcards")){
-            Toast.makeText(this, "Flashcards", LENGTH_LONG).show();
+            Intent iflash = new Intent(HomeActivity.this, FlascardActivity.class);
+            startActivity(iflash);
         }
 
         if (item.getTitle().equals("Exercices")){
