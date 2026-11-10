@@ -49,7 +49,8 @@ public class HomeActivity extends AppCompatActivity {
         }
 
         if (item.getTitle().equals("Exercices")){
-            Toast.makeText(this, "Exercise", LENGTH_LONG).show();
+            Intent iexercices = new Intent(HomeActivity.this, ExercicesActivity.class);
+            startActivity(iexercices);
         }
 
         if (item.getTitle().equals("Pronunciacion")){
