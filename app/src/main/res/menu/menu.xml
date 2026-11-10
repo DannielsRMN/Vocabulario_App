@@ -4,7 +4,7 @@
 
     <item
         android:id="@+id/flascards"
-        android:title="Flashcars"
+        android:title="Flashcards"
         app:showAsAction="always"
         />
 

@@ -46,7 +46,7 @@ public class HomeActivity extends AppCompatActivity {
             Toast.makeText(this, "Flashcards", LENGTH_LONG).show();
         }
 
-        if (item.getTitle().equals("Exercise")){
+        if (item.getTitle().equals("Exercices")){
             Toast.makeText(this, "Exercise", LENGTH_LONG).show();
         }
 
