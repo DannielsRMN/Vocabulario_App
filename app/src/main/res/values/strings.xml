@@ -27,4 +27,11 @@
     <string name="faMostrar">Mostrar</string>
     <string name="faSiguiente">Siguiente</string>
     <string name="faVolver">Volver</string>
+
+    // Exercices Activity
+    <string name="eaText">Reproduzca el audio</string>
+    <string name="eaop1">Opción 1</string>
+    <string name="eaop2">Opción 2</string>
+    <string name="eaop3">Opción 3</string>
+    <string name="eavolver">Volver</string>
 </resources>
