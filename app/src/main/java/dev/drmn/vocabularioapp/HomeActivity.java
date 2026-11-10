@@ -58,7 +58,8 @@ public class HomeActivity extends AppCompatActivity {
         }
 
         if (item.getTitle().equals("Cuenta")){
-            Toast.makeText(this, "Cuenta", LENGTH_LONG).show();
+            Intent iaccount = new Intent(HomeActivity.this, AccountActivity.class);
+            startActivity(iaccount);
         }
 
         if (item.getTitle().equals("Cerrar Sesión")){
