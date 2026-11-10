@@ -21,4 +21,10 @@
         <item>Aprendiz</item>
         <item>Administrador</item>
     </string-array>
+
+    // Flashcard Activity
+    <string name="faAnterior">Anterior</string>
+    <string name="faMostrar">Mostrar</string>
+    <string name="faSiguiente">Siguiente</string>
+    <string name="faVolver">Volver</string>
 </resources>
