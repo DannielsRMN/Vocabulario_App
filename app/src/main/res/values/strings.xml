@@ -34,4 +34,14 @@
     <string name="eaop2">Opción 2</string>
     <string name="eaop3">Opción 3</string>
     <string name="eavolver">Volver</string>
+
+    // Account Activity
+    <string name="acWelcome">Bienvenido, </string>
+    <string name="acNombre">Danniels Rafael</string>
+    <string name="acApellidos">Martel Neira</string>
+    <string name="acEmail">Correo Electrónico</string>
+    <string name="acCorreo">DannielsR.MN@gmail.com</string>
+    <string name="acDate">Fecha de Nacimiento</string>
+    <string name="acFecha">13/12/2003</string>
+    <string name="acVolver">Volver</string>
 </resources>
