@@ -53,7 +53,7 @@ public class PalabraAdapter extends RecyclerView.Adapter<PalabraAdapter.PalabraV
         public PalabraViewHolder(@NonNull View itemView) {
             super(itemView);
             itemPalabra = itemView.findViewById(R.id.iPalabra);
-            itemDificultad = itemPalabra.findViewById(R.id.iDificultad);
+            itemDificultad = itemView.findViewById(R.id.iDificultad);
             btnEscuchar = itemView.findViewById(R.id.iEscuchar);
         }
     }

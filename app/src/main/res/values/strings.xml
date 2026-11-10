@@ -44,4 +44,7 @@
     <string name="acDate">Fecha de Nacimiento</string>
     <string name="acFecha">13/12/2003</string>
     <string name="acVolver">Volver</string>
+
+    // Vocabulary Activity
+    <string name="voVolver">Volver</string>
 </resources>

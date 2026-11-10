@@ -54,7 +54,8 @@ public class HomeActivity extends AppCompatActivity {
         }
 
         if (item.getTitle().equals("Pronunciacion")){
-            Toast.makeText(this, "Pronunciacion", LENGTH_LONG).show();
+            Intent ivoca = new Intent(HomeActivity.this, VocabularyActivity.class);
+            startActivity(ivoca);
         }
 
         if (item.getTitle().equals("Cuenta")){

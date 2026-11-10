@@ -1,6 +1,8 @@
 package dev.drmn.vocabularioapp;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,6 +20,7 @@ public class VocabularyActivity extends AppCompatActivity {
     RecyclerView miRv;
     RecyclerView.LayoutManager miLayoutManager;
     RecyclerView.Adapter miAdapter;
+    Button btnRegresar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +34,7 @@ public class VocabularyActivity extends AppCompatActivity {
         });
 
         miRv = findViewById(R.id.miRV);
+        btnRegresar = findViewById(R.id.btnVoVolver);
         miLayoutManager = new LinearLayoutManager(this);
         miRv.setLayoutManager(miLayoutManager);
 
@@ -58,6 +62,13 @@ public class VocabularyActivity extends AppCompatActivity {
 
         miAdapter = new PalabraAdapter(lista);
         miRv.setAdapter(miAdapter);
+
+        btnRegresar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
     }
 }
