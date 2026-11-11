@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
 
     Button btn1, btn2;
     EditText etCorreo, etPassword;
+    public static List<Usuario> usuarios = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +41,6 @@ public class MainActivity extends AppCompatActivity {
         etCorreo = findViewById(R.id.correoElectronico);
         etPassword = findViewById(R.id.contrasena);
 
-        List<Usuario> usuarios = new ArrayList<>();
         usuarios.add(new Usuario("DannielsR.MN@gmail.com", "admin"));
         usuarios.add(new Usuario("Admin@gmail.com", "1234"));
         usuarios.add(new Usuario("admin", "1234"));
