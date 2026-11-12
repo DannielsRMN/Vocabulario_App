@@ -4,9 +4,11 @@ import static android.widget.Toast.LENGTH_LONG;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.ranging.RangingManager;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -16,8 +18,18 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 public class HomeActivity extends AppCompatActivity {
+    TextView tvRacha;
+    RecyclerView rvHome;
+    RecyclerView.LayoutManager layoutManagerHome;
+    RecyclerView.Adapter homeAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +44,22 @@ public class HomeActivity extends AppCompatActivity {
 
         Toolbar toolbar = findViewById(R.id.mitoolbar);
         setSupportActionBar(toolbar);
+
+        tvRacha = findViewById(R.id.hmDays);
+        List<Racha> rachaList = new ArrayList<>();
+        rachaList.add(new Racha(1, 4));
+        tvRacha.setText(String.valueOf(rachaList.get(0).getCantDias()));
+
+        rvHome = findViewById(R.id.rvHistorialSemanal);
+        layoutManagerHome = new LinearLayoutManager(this);
+        rvHome.setLayoutManager(layoutManagerHome);
+
+        List<HistorialSemanal> historials = new ArrayList<>();
+        historials.add(new HistorialSemanal("Vocabulary", LocalDate.of(2003,12,13), "Se practico vocabulario mediante flashcards"));
+        historials.add(new HistorialSemanal("Exercices", LocalDate.of(2013,03,28), "Se practicaron ejercicios de listening"));
+
+        homeAdapter = new HistorialAdapter(this, historials);
+        rvHome.setAdapter(homeAdapter);
     }
 
     @Override
