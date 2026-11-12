@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
                         String contrasenaCapturada = etPassword.getText().toString().toLowerCase();
                         if(correoCapturado.equals(usuarios.get(i).getCorreoElectronico().toLowerCase())){
                             if (contrasenaCapturada.equals(usuarios.get(i).getContrasena())){
-                                Intent i2 = new Intent(MainActivity.this, HomeActivity.class);
+                                Intent i2 = new Intent(MainActivity.this, ChooseActivity.class);
                                 startActivity(i2);
                             } else {
                                 Toast.makeText(MainActivity.this, "Credenciales inválidas", LENGTH_SHORT).show();

@@ -47,4 +47,11 @@
 
     // Vocabulary Activity
     <string name="voVolver">Volver</string>
+
+    // Choosen Activity
+    <string-array name="dificultades">
+        <item>Fácil</item>
+        <item>Medio</item>
+        <item>Difícil</item>
+    </string-array>
 </resources>
