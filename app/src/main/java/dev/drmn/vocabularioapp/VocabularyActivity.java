@@ -21,6 +21,7 @@ public class VocabularyActivity extends AppCompatActivity {
     RecyclerView.LayoutManager miLayoutManager;
     RecyclerView.Adapter miAdapter;
     Button btnRegresar;
+    public static List<Palabra> lista = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,27 +39,17 @@ public class VocabularyActivity extends AppCompatActivity {
         miLayoutManager = new LinearLayoutManager(this);
         miRv.setLayoutManager(miLayoutManager);
 
-        List<Palabra> lista = new ArrayList<>();
-        lista.add(new Palabra("Hello", "Fácil"));
-        lista.add(new Palabra("Hi", "Fácil"));
-        lista.add(new Palabra("Carpenter", "Media"));
-        lista.add(new Palabra("Reporter", "Media"));
-        lista.add(new Palabra("Dentist", "Media"));
-        lista.add(new Palabra("Please", "Fácil"));
-        lista.add(new Palabra("Sorry", "Fácil"));
-        lista.add(new Palabra("He", "Fácil"));
-        lista.add(new Palabra("Cat", "Fácil"));
-        lista.add(new Palabra("Waiter ", "Media"));
-        lista.add(new Palabra("Taxi driver", "Media"));
-        lista.add(new Palabra("Salesperson", "Media"));
-        lista.add(new Palabra("Two", "Fácil"));
-        lista.add(new Palabra("Dog", "Fácil"));
-        lista.add(new Palabra("Bride", "Difícil"));
-        lista.add(new Palabra("Breast", "Difícil"));
-        lista.add(new Palabra("Breed", "Difícil"));
-        lista.add(new Palabra("Breeze", "Difícil"));
-        lista.add(new Palabra("Three", "Fácil"));
-        lista.add(new Palabra("Tree", "Fácil"));
+        lista.add(new Palabra("Hello", "Hola","Fácil", "Inglés"));
+        lista.add(new Palabra("Hi","Hola","Fácil","Inglés"));
+        lista.add(new Palabra("Carpenter","Carpintero","Media","Inglés"));
+        lista.add(new Palabra("Reporter","Reportero","Media","Inglés"));
+        lista.add(new Palabra("Waiter ","Mesero","Media","Inglés"));
+        lista.add(new Palabra("Taxi driver","Taxista","Media","Inglés"));
+        lista.add(new Palabra("Salesperson","Vendedor","Media","Inglés"));
+        lista.add(new Palabra("Breed","Criar","Difícil","Inglés"));
+        lista.add(new Palabra("Breeze","Brisa","Difícil","Inglés"));
+        lista.add(new Palabra("Three","Tres","Fácil","Inglés"));
+        lista.add(new Palabra("Tree","Árbol","Fácil","Inglés"));
 
         miAdapter = new PalabraAdapter(lista);
         miRv.setAdapter(miAdapter);
