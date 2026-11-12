@@ -2,6 +2,9 @@ package dev.drmn.vocabularioapp;
 
 import static android.widget.Toast.LENGTH_SHORT;
 
+import android.content.Context;
+import android.speech.tts.TextToSpeech;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,11 +16,22 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
+import java.util.Locale;
 
 public class PalabraAdapter extends RecyclerView.Adapter<PalabraAdapter.PalabraViewHolder> {
     private List<Palabra> listadoPalabras;
-    public PalabraAdapter(List<Palabra> lista) {
+    private TextToSpeech tts;
+    public PalabraAdapter(Context context,List<Palabra> lista) {
         this.listadoPalabras = lista;
+
+        tts = new TextToSpeech(context, new TextToSpeech.OnInitListener() {
+            @Override
+            public void onInit(int status) {
+                if (status == TextToSpeech.SUCCESS){
+                    tts.setLanguage(Locale.US);
+                }
+            }
+        });
     }
 
     @NonNull
@@ -36,6 +50,11 @@ public class PalabraAdapter extends RecyclerView.Adapter<PalabraAdapter.PalabraV
         holder.btnEscuchar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(tts != null){
+                    tts.speak(palabra.getPalabra(), TextToSpeech.QUEUE_FLUSH, null);
+                    Log.i("TTS: ", "Escuando "+palabra.getPalabra());
+                }
+
                 Toast.makeText(v.getContext(), "Palabra: "+palabra.getPalabra(), LENGTH_SHORT).show();
             }
         });

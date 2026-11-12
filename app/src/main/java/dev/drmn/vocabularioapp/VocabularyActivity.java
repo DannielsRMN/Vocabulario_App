@@ -51,7 +51,7 @@ public class VocabularyActivity extends AppCompatActivity {
         lista.add(new Palabra("Three","Tres","Fácil","Inglés"));
         lista.add(new Palabra("Tree","Árbol","Fácil","Inglés"));
 
-        miAdapter = new PalabraAdapter(lista);
+        miAdapter = new PalabraAdapter(this, lista);
         miRv.setAdapter(miAdapter);
 
         btnRegresar.setOnClickListener(new View.OnClickListener() {
