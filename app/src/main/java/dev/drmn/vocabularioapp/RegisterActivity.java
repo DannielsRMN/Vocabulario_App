@@ -13,19 +13,26 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class RegisterActivity extends AppCompatActivity {
     Spinner edSpinner;
     Button btn;
     EditText etNombres, etApellidos, etCorreo, etContrasena, etFecha;
+    String urlBase = "https://headpiece-grab-cornflake.ngrok-free.dev/api_server/";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,26 +62,51 @@ public class RegisterActivity extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                try {
-                    String nombres = etNombres.getText().toString();
-                    String apellidos = etApellidos.getText().toString();
-                    String fechaNacimiento = etFecha.getText().toString();
-                    String correo = etCorreo.getText().toString();
-                    String contrasena = etContrasena.getText().toString();
-                    String rol = edSpinner.getSelectedItem().toString();
+                String nombres = etNombres.getText().toString();
+                String apellidos = etApellidos.getText().toString();
+                String fechaNacimiento = etFecha.getText().toString();
+                String correo = etCorreo.getText().toString();
+                String contrasena = etContrasena.getText().toString();
+                String rol = edSpinner.getSelectedItem().toString();
 
-                    if (nombres.isEmpty() && apellidos.isEmpty() && fechaNacimiento.isEmpty() && correo.isEmpty() && contrasena.isEmpty() && rol.isEmpty()){
+                try {
+                    if (nombres.isEmpty() || apellidos.isEmpty() || fechaNacimiento.isEmpty() || correo.isEmpty() || contrasena.isEmpty() || rol.isEmpty()){
                         Toast.makeText(RegisterActivity.this, "Rellene los campos, por favor.", LENGTH_SHORT).show();
                     } else {
-                        List<Usuario> usuarios = MainActivity.usuarios;
-                        usuarios.add(new Usuario(nombres, apellidos, fechaNacimiento, correo, contrasena, rol));
+                        // Requests
+                        StringRequest registroRequest = new StringRequest(
+                                Request.Method.POST,
+                                urlBase + "usuarios.php",
+                                new Response.Listener<String>() {
+                                    @Override
+                                    public void onResponse(String s) {
+                                        Log.d("Volley", "Response: " + s);
+                                    }
+                                },
+                                new Response.ErrorListener() {
+                                    @Override
+                                    public void onErrorResponse(VolleyError volleyError) {
+                                        Log.e("Volley", "Error"+volleyError.getMessage());
+                                    }
+                                }
+                        ){
+                            @Override
+                            protected Map<String, String> getParams(){
+                                Map<String, String> params = new HashMap<>();
+                                params.put("nombre", nombres);
+                                params.put("apellidos", apellidos);
+                                params.put("fecha_nacimiento", fechaNacimiento);
+                                params.put("correo_electronico", correo);
+                                params.put("contrasena", contrasena);
+                                params.put("rol", rol);
+                                return params;
+                            }
+                        };
 
-                        Log.i("Registro", "Nombres: "+nombres+" Apellidos: "+apellidos+" Fecha: "+fechaNacimiento+" Correo: "+correo+" Contraseña: "+contrasena+ " Rol: "+rol);
-                        Integer n = usuarios.size();
-                        Log.i("Registro Completo", usuarios.get(n-1).getCorreoElectronico() + " - "+ usuarios.get(n-1).getContrasena());
-
+                        VolleySingleton.getInstance(RegisterActivity.this).agregar(registroRequest);
                         Toast.makeText(RegisterActivity.this, "Usuario registrado.", LENGTH_SHORT).show();
-                        finish();
+                        Intent ivolver = new Intent(RegisterActivity.this, MainActivity.class);
+                        startActivity(ivolver);
                     }
                 } catch (Exception e){
                     Log.e("Register", "Error durante el registro de un nuevo usuario");
