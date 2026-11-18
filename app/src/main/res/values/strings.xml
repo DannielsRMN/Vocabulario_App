@@ -50,8 +50,8 @@
 
     // Choosen Activity
     <string-array name="dificultades">
-        <item>Fácil</item>
+        <item>Bajo</item>
         <item>Medio</item>
-        <item>Difícil</item>
+        <item>Alto</item>
     </string-array>
 </resources>

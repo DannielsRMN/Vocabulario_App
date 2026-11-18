@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
 
     Button btn1, btn2;
     EditText etCorreo, etPassword;
-    String urlBase = "https://headpiece-grab-cornflake.ngrok-free.dev/api_server/";
+    public static String urlBase = "https://headpiece-grab-cornflake.ngrok-free.dev/api_server/";
 
     public static List<Usuario> usuarios = new ArrayList<>();
 
@@ -65,7 +65,10 @@ public class MainActivity extends AppCompatActivity {
                                 int id = jsonObject.getInt("id");
                                 String email = jsonObject.getString("correo_electronico");
                                 String contrasena = jsonObject.getString("contrasena");
-                                usuarios.add(new Usuario(id, email, contrasena));
+                                String idioma = jsonObject.getString("idioma");
+                                String dificultad = jsonObject.getString("dificultad");
+
+                                usuarios.add(new Usuario(id, email, contrasena, idioma, dificultad));
                             }
                         } catch (Exception e){
                             e.printStackTrace();
@@ -79,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
         );
-        VolleySingleton.getInstance(this).agregar(request);;
+        VolleySingleton.getInstance(this).agregar(request);
 
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override

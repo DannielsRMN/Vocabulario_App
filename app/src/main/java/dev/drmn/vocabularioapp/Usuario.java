@@ -1,6 +1,5 @@
 package dev.drmn.vocabularioapp;
 
-
 public class Usuario {
     private int id;
     private String nombres;
@@ -10,12 +9,22 @@ public class Usuario {
     private String contrasena;
     private String rol;
     private String idioma;
+    private int id_idioma;
     private String difficultad;
+    private int id_dificultad;
 
     public Usuario(int id, String correoElectronico, String contrasena) {
         this.id = id;
         this.correoElectronico = correoElectronico;
         this.contrasena = contrasena;
+    }
+
+    public Usuario(int id, String correoElectronico, String contrasena, String idioma, String dificultad) {
+        this.id = id;
+        this.correoElectronico = correoElectronico;
+        this.contrasena = contrasena;
+        this.idioma = idioma;
+        this.difficultad = dificultad;
     }
 
     public Usuario(String nombres, String apellidos, String fechaNacimiento, String correoElectronico, String contrasena, String rol) {
@@ -27,7 +36,7 @@ public class Usuario {
         this.rol = rol;
     }
 
-    public Usuario(String nombres, String apellidos, String fechaNacimiento, String correoElectronico, String contrasena, String rol, String idioma, String difficultad) {
+    public Usuario(String nombres, String apellidos, String fechaNacimiento, String correoElectronico, String contrasena, String rol, String idioma, int id_idioma, String difficultad, int id_dificultad) {
         this.nombres = nombres;
         this.apellidos = apellidos;
         this.fechaNacimiento = fechaNacimiento;
@@ -35,7 +44,9 @@ public class Usuario {
         this.contrasena = contrasena;
         this.rol = rol;
         this.idioma = idioma;
+        this.id_idioma = id_idioma;
         this.difficultad = difficultad;
+        this.id_dificultad = id_dificultad;
     }
 
     public String getCorreoElectronico() {

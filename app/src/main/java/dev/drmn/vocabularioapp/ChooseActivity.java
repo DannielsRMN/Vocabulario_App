@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,10 +17,25 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.StringRequest;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 public class ChooseActivity extends AppCompatActivity {
     Button btnChoosen;
     Spinner chSpinner;
     RadioGroup radioGroup;
+    String urlBase = "https://headpiece-grab-cornflake.ngrok-free.dev/api_server/";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +48,9 @@ public class ChooseActivity extends AppCompatActivity {
             return insets;
         });
 
+        Intent usuarioDetalle = getIntent();
+        int idCapturada = usuarioDetalle.getIntExtra("idUsuario", 0);
+
         btnChoosen = findViewById(R.id.chButton);
         chSpinner = findViewById(R.id.chSpinner);
         radioGroup = findViewById(R.id.radioGroup);
@@ -43,17 +62,31 @@ public class ChooseActivity extends AppCompatActivity {
         btnChoosen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int selección = radioGroup.getCheckedRadioButtonId();
-                RadioButton btnSeleccionado = findViewById(selección);
-                String idioma = btnSeleccionado.getText().toString();
-
-                String dificultad = chSpinner.getSelectedItem().toString();
-
-                Log.i("IDIOMA: ", idioma);
-                Log.i("DIFICULTAD: ", dificultad);
-
-                Intent ichoosen = new Intent(ChooseActivity.this, HomeActivity.class);
-                startActivity(ichoosen);
+                int seleccion = radioGroup.getCheckedRadioButtonId();
+                int idIdioma = Integer.parseInt(findViewById(seleccion).getTag().toString());
+                int idDificultad = chSpinner.getSelectedItemPosition() + 1;
+                StringRequest request = new StringRequest(
+                        Request.Method.POST,
+                        urlBase + "usuarios.php",
+                        response -> {
+                            Intent intent = new Intent(ChooseActivity.this, HomeActivity.class);
+                            intent.putExtra("idUsuario", idCapturada);
+                            startActivity(intent);
+                            finish();
+                        },
+                        error -> Log.e("Volley", "Error: " + error.toString())
+                ) {
+                    @Override
+                    protected Map<String, String> getParams() {
+                        Map<String, String> params = new HashMap<>();
+                        params.put("accion", "elegir");
+                        params.put("id", String.valueOf(idCapturada));
+                        params.put("idioma_elegido", String.valueOf(idIdioma));
+                        params.put("dificultad_elegida", String.valueOf(idDificultad));
+                        return params;
+                    }
+                };
+                VolleySingleton.getInstance(ChooseActivity.this).agregar(request);
             }
         });
     }

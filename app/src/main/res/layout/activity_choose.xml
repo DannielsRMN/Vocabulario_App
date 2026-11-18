@@ -35,19 +35,22 @@
             android:id="@+id/raIngles"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:tag="1"
             android:text="Inglés" />
 
         <RadioButton
             android:id="@+id/raPortuguese"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Portuguese" />
+            android:tag="3"
+            android:text="Portugués" />
 
         <RadioButton
             android:id="@+id/raFrances"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Frances" />
+            android:tag="2"
+            android:text="Francés" />
 
     </RadioGroup>
 
