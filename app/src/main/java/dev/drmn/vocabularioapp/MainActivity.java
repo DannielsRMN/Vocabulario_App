@@ -21,8 +21,6 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
 import org.json.JSONArray;
@@ -96,23 +94,27 @@ public class MainActivity extends AppCompatActivity {
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String correoCapturado = etCorreo.getText().toString().toLowerCase();
+                String contrasenaCapturada = etPassword.getText().toString().toLowerCase();
+                int bandera = 0;
+
                 try {
                     for (int i = 0; i < usuarios.size(); i++){
-                        String correoCapturado = etCorreo.getText().toString().toLowerCase();
-                        String contrasenaCapturada = etPassword.getText().toString().toLowerCase();
                         if(correoCapturado.equals(usuarios.get(i).getCorreoElectronico().toLowerCase())){
                             if (contrasenaCapturada.equals(usuarios.get(i).getContrasena())){
                                 Intent i2 = new Intent(MainActivity.this, ChooseActivity.class);
+                                bandera = 1;
                                 startActivity(i2);
-                            } else {
-                                Toast.makeText(MainActivity.this, "Credenciales inválidas", LENGTH_SHORT).show();
                             }
-                        } else {
-                            Toast.makeText(MainActivity.this, "Credenciales inválidas", LENGTH_SHORT).show();
                         }
                     }
+
+                    if(bandera == 0){
+                        Toast.makeText(MainActivity.this, "Credenciales inválidas", LENGTH_SHORT).show();
+                    }
+
                 } catch (Exception e){
-                    Log.e("Login", "Error en el login.");
+                    Log.e("Login", "Error encontrado en el Login");
                     e.printStackTrace();
                 }
             }
