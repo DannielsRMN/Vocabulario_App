@@ -56,4 +56,3 @@ El plan de avance nos permitirá conocer la distribución por porcentajes sobre 
 
 ### 8. Información de la cuenta
 ![alt text]({FB2021B7-93EE-44F7-A22E-29F60C544B13}.png)
-
