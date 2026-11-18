@@ -134,3 +134,8 @@ Se presentarán los commits según los entregables o hitos a resolver, actual (H
 > Fecha y Hora: 12/11/2026 16:09
 
 ![alt text]({EE8B1428-C5B8-4F93-9783-F9D324ED4B99}.png)
+
+## Hito Nro. 3 (17 Noviembre)
+> Fecha y Hora: 17/11/2026 19:59
+
+![alt text]({6558690E-BC13-446D-BBC7-38FBDA509F30}.png)
