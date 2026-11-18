@@ -34,6 +34,7 @@ android {
 dependencies {
     implementation(libs.activity.ktx)
     implementation(libs.appcompat)
+    implementation("com.android.volley:volley:1.2.1")
     implementation("androidx.recyclerview:recyclerview:1.4.0")
     implementation(libs.constraintlayout)
     implementation(libs.material)

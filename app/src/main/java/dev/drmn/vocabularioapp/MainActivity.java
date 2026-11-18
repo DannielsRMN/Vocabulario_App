@@ -16,6 +16,18 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
 
     Button btn1, btn2;
     EditText etCorreo, etPassword;
+    String urlBase = "https://headpiece-grab-cornflake.ngrok-free.dev/api_server/";
+
     public static List<Usuario> usuarios = new ArrayList<>();
 
     @Override
@@ -41,9 +55,35 @@ public class MainActivity extends AppCompatActivity {
         etCorreo = findViewById(R.id.correoElectronico);
         etPassword = findViewById(R.id.contrasena);
 
-        usuarios.add(new Usuario("DannielsR.MN@gmail.com", "admin"));
-        usuarios.add(new Usuario("Admin@gmail.com", "1234"));
-        usuarios.add(new Usuario("admin", "1234"));
+        // Request
+        RequestQueue queue = Volley.newRequestQueue(this);
+        JsonArrayRequest request = new JsonArrayRequest(
+                Request.Method.GET,
+                urlBase + "usuarios.php",
+                null,
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray jsonArray) {
+                        try {
+                            for (int i = 0; i < jsonArray.length(); i++){
+                                JSONObject jsonObject = jsonArray.getJSONObject(i);
+                                String email = jsonObject.getString("correo_electronico");
+                                String contrasena = jsonObject.getString("contrasena");
+                                usuarios.add(new Usuario(email, contrasena));
+                            }
+                        } catch (Exception e){
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError volleyError) {
+                        Log.e("Volley", "Error: " + volleyError.toString());
+                    }
+                }
+        );
+        queue.add(request);
 
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
