@@ -62,9 +62,10 @@ public class MainActivity extends AppCompatActivity {
                         try {
                             for (int i = 0; i < jsonArray.length(); i++){
                                 JSONObject jsonObject = jsonArray.getJSONObject(i);
+                                int id = jsonObject.getInt("id");
                                 String email = jsonObject.getString("correo_electronico");
                                 String contrasena = jsonObject.getString("contrasena");
-                                usuarios.add(new Usuario(email, contrasena));
+                                usuarios.add(new Usuario(id, email, contrasena));
                             }
                         } catch (Exception e){
                             e.printStackTrace();
@@ -91,6 +92,7 @@ public class MainActivity extends AppCompatActivity {
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                int idCapturado;
                 String correoCapturado = etCorreo.getText().toString().toLowerCase();
                 String contrasenaCapturada = etPassword.getText().toString().toLowerCase();
                 int bandera = 0;
@@ -99,7 +101,9 @@ public class MainActivity extends AppCompatActivity {
                     for (int i = 0; i < usuarios.size(); i++){
                         if(correoCapturado.equals(usuarios.get(i).getCorreoElectronico().toLowerCase())){
                             if (contrasenaCapturada.equals(usuarios.get(i).getContrasena())){
+                                idCapturado = usuarios.get(i).getId();
                                 Intent i2 = new Intent(MainActivity.this, ChooseActivity.class);
+                                i2.putExtra("idUsuario", idCapturado);
                                 bandera = 1;
                                 startActivity(i2);
                             }

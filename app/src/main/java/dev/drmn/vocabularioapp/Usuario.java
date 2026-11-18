@@ -2,6 +2,7 @@ package dev.drmn.vocabularioapp;
 
 
 public class Usuario {
+    private int id;
     private String nombres;
     private String apellidos;
     private String fechaNacimiento;
@@ -11,7 +12,8 @@ public class Usuario {
     private String idioma;
     private String difficultad;
 
-    public Usuario(String correoElectronico, String contrasena) {
+    public Usuario(int id, String correoElectronico, String contrasena) {
+        this.id = id;
         this.correoElectronico = correoElectronico;
         this.contrasena = contrasena;
     }
@@ -98,5 +100,13 @@ public class Usuario {
 
     public void setDifficultad(String difficultad) {
         this.difficultad = difficultad;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }
