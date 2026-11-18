@@ -72,7 +72,6 @@ public class ChooseActivity extends AppCompatActivity {
                             Intent intent = new Intent(ChooseActivity.this, HomeActivity.class);
                             intent.putExtra("idUsuario", idCapturada);
                             startActivity(intent);
-                            finish();
                         },
                         error -> Log.e("Volley", "Error: " + error.toString())
                 ) {

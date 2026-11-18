@@ -5,6 +5,7 @@ import static android.widget.Toast.LENGTH_LONG;
 import android.content.Intent;
 import android.os.Bundle;
 import android.ranging.RangingManager;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -21,6 +22,14 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -30,6 +39,8 @@ public class HomeActivity extends AppCompatActivity {
     RecyclerView rvHome;
     RecyclerView.LayoutManager layoutManagerHome;
     RecyclerView.Adapter homeAdapter;
+    String urlBase = "https://headpiece-grab-cornflake.ngrok-free.dev/api_server/";
+    String rachaStr = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,13 +57,45 @@ public class HomeActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         tvRacha = findViewById(R.id.hmDays);
-        List<Racha> rachaList = new ArrayList<>();
-        rachaList.add(new Racha(1, 4));
-        tvRacha.setText(String.valueOf(rachaList.get(0).getCantDias()));
 
         rvHome = findViewById(R.id.rvHistorialSemanal);
         layoutManagerHome = new LinearLayoutManager(this);
         rvHome.setLayoutManager(layoutManagerHome);
+
+        Intent usuarioDetalle = getIntent();
+        int idCapturada = usuarioDetalle.getIntExtra("idUsuario", 0);
+        int idUsuario = getIntent().getIntExtra("idUsuario", -1);
+        Log.d("Racha", "idUsuario recibido = " + idUsuario);
+
+        JsonArrayRequest progresoRequest = new JsonArrayRequest(
+                Request.Method.GET,
+                urlBase + "progreso.php?usuario_id=" + idCapturada,
+                null,
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray jsonArray) {
+                        Log.d("Racha", "Recibido: " + jsonArray);
+                        try {
+                            int racha = 0;
+                            if (jsonArray.length() > 0) {
+                                racha = jsonArray.getJSONObject(0).getInt("racha");
+                            }
+                            rachaStr = String.valueOf(racha);
+                            tvRacha.setText(rachaStr);
+                            Log.i("Valor Racha", rachaStr);   // aquí sí vale 5
+                        } catch (Exception e) {
+                            Log.e("Racha", "Error", e);
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError volleyError) {
+                        Log.e("Volley", "Error: " + volleyError.toString());
+                    }
+                }
+        );
+        VolleySingleton.getInstance(this).agregar(progresoRequest);
 
         List<HistorialSemanal> historials = new ArrayList<>();
         historials.add(new HistorialSemanal("Vocabulary", LocalDate.of(2003,12,13), "Se practico vocabulario mediante flashcards"));
