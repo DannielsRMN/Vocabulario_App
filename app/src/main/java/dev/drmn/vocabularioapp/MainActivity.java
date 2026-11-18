@@ -17,11 +17,9 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.android.volley.Request;
-import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
-import com.android.volley.toolbox.Volley;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -54,7 +52,6 @@ public class MainActivity extends AppCompatActivity {
         etPassword = findViewById(R.id.contrasena);
 
         // Request
-        RequestQueue queue = Volley.newRequestQueue(this);
         JsonArrayRequest request = new JsonArrayRequest(
                 Request.Method.GET,
                 urlBase + "usuarios.php",
@@ -81,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
         );
-        queue.add(request);
+        VolleySingleton.getInstance(this).agregar(request);;
 
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
