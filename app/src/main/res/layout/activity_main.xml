@@ -9,9 +9,13 @@
 
     <TextView
         android:id="@+id/textoLogin"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="35dp"
+        android:layout_marginEnd="35dp"
         android:text="@string/textoLog"
+        android:textSize="24dp"
+        android:textAlignment="center"
         app:layout_constraintBottom_toTopOf="@+id/correoElectronico"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -21,11 +25,13 @@
 
     <EditText
         android:id="@+id/correoElectronico"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="35dp"
+        android:layout_marginEnd="35dp"
         android:ems="10"
-        android:inputType="text"
         android:hint="@string/correoHint"
+        android:inputType="text"
         app:layout_constraintBottom_toTopOf="@+id/contrasena"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -35,11 +41,13 @@
 
     <EditText
         android:id="@+id/contrasena"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="35dp"
+        android:layout_marginEnd="35dp"
         android:ems="10"
-        android:inputType="text"
         android:hint="@string/contraHint"
+        android:inputType="text"
         app:layout_constraintBottom_toTopOf="@+id/iniciarSesion"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -49,9 +57,12 @@
 
     <Button
         android:id="@+id/iniciarSesion"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="55dp"
+        android:layout_marginEnd="55dp"
         android:text="@string/btnLogin"
+        android:backgroundTint="@color/bg_menu"
         app:layout_constraintBottom_toTopOf="@+id/registrarse"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -61,8 +72,11 @@
 
     <Button
         android:id="@+id/registrarse"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="55dp"
+        android:layout_marginEnd="55dp"
+        android:backgroundTint="@color/bg_menu"
         android:text="@string/btnRegister"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
