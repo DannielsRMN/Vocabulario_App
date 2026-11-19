@@ -6,7 +6,11 @@
         <item name="titleTextColor">@color/lt_menu</item>
         <item name="android:actionMenuTextColor">@color/lt_menu</item>
         <item name="colorControlNormal">@color/lt_menu</item>
+    </style>
 
+    <style name="btn_Recto" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">8dp</item>
     </style>
 
     <style name="Theme.VocabularioApp" parent="Base.Theme.VocabularioApp" />
