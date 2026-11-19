@@ -26,6 +26,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.JsonObjectRequest;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -43,6 +44,8 @@ public class HomeActivity extends AppCompatActivity {
     String rachaStr = "";
     List<HistorialSemanal> historials = new ArrayList<>();
     int idCapturada;
+    int idiomaID;
+    int dificultadID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,9 +71,7 @@ public class HomeActivity extends AppCompatActivity {
         rvHome.setAdapter(homeAdapter);
 
         Intent usuarioDetalle = getIntent();
-        int idCapturada = usuarioDetalle.getIntExtra("idUsuario", 0);
-        int idUsuario = getIntent().getIntExtra("idUsuario", -1);
-        Log.d("Racha", "idUsuario recibido = " + idUsuario);
+        idCapturada = usuarioDetalle.getIntExtra("idUsuario", 0);
 
         JsonArrayRequest progresoRequest = new JsonArrayRequest(
                 Request.Method.GET,
@@ -129,8 +130,20 @@ public class HomeActivity extends AppCompatActivity {
                     }
                 }
         );
+        JsonObjectRequest cuenta = new JsonObjectRequest(
+                Request.Method.GET,
+                urlBase + "usuarios.php?id=" + idCapturada,
+                null,
+                response -> {
+                    idiomaID = response.optInt("id_idioma", 0);
+                    dificultadID = response.optInt("id_dificultad", 0);
+                    Log.d("Filtro", "idioma=" + idiomaID + " dificultad=" + dificultadID);
+                },
+                error -> Log.e("Volley", "Error: " + error.toString())
+        );
         VolleySingleton.getInstance(this).agregar(progresoRequest);
         VolleySingleton.getInstance(this).agregar(historialRequest);
+        VolleySingleton.getInstance(this).agregar(cuenta);
     }
 
     @Override
@@ -154,6 +167,8 @@ public class HomeActivity extends AppCompatActivity {
 
         if (item.getTitle().equals("Pronunciacion")){
             Intent ivoca = new Intent(HomeActivity.this, VocabularyActivity.class);
+            ivoca.putExtra("idiomaID", idiomaID);
+            ivoca.putExtra("dificultadID", dificultadID);
             startActivity(ivoca);
         }
 

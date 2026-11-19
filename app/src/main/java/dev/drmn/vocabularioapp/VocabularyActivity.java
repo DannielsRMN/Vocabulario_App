@@ -1,6 +1,8 @@
 package dev.drmn.vocabularioapp;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -12,6 +14,14 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,10 +31,14 @@ public class VocabularyActivity extends AppCompatActivity {
     RecyclerView.LayoutManager miLayoutManager;
     RecyclerView.Adapter miAdapter;
     Button btnRegresar;
-    public static List<Palabra> lista = new ArrayList<>();
+    String urlBase = "https://headpiece-grab-cornflake.ngrok-free.dev/api_server/";
+    int idioma_filtro;
+    int dificultad_filtro;
+    List<Palabra> palabrasAPI = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Log.d("Vocabulario", "onCreate abierto");
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_vocabulary);
@@ -39,20 +53,44 @@ public class VocabularyActivity extends AppCompatActivity {
         miLayoutManager = new LinearLayoutManager(this);
         miRv.setLayoutManager(miLayoutManager);
 
-        lista.add(new Palabra("Hello", "Hola","Fácil", "Inglés"));
-        lista.add(new Palabra("Hi","Hola","Fácil","Inglés"));
-        lista.add(new Palabra("Carpenter","Carpintero","Media","Inglés"));
-        lista.add(new Palabra("Reporter","Reportero","Media","Inglés"));
-        lista.add(new Palabra("Waiter ","Mesero","Media","Inglés"));
-        lista.add(new Palabra("Taxi driver","Taxista","Media","Inglés"));
-        lista.add(new Palabra("Salesperson","Vendedor","Media","Inglés"));
-        lista.add(new Palabra("Breed","Criar","Difícil","Inglés"));
-        lista.add(new Palabra("Breeze","Brisa","Difícil","Inglés"));
-        lista.add(new Palabra("Three","Tres","Fácil","Inglés"));
-        lista.add(new Palabra("Tree","Árbol","Fácil","Inglés"));
-
-        miAdapter = new PalabraAdapter(this, lista);
+        miAdapter = new PalabraAdapter(this, palabrasAPI);
         miRv.setAdapter(miAdapter);
+
+        Intent captura = getIntent();
+        idioma_filtro = captura.getIntExtra("idiomaID", -1);
+        dificultad_filtro = captura.getIntExtra("dificultadID",     -1);
+
+        JsonArrayRequest palabras = new JsonArrayRequest(
+                Request.Method.GET,
+                urlBase + "palabra_filtrada.php?idioma_id="+idioma_filtro+"&dificultad_id="+dificultad_filtro,
+                null,
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray jsonArray) {
+                        Log.d("Vocabulario", "idioma=" + idioma_filtro + " dificultad=" + dificultad_filtro);
+                        try {
+                            for (int i=0; i<jsonArray.length(); i++){
+                                String palabra = jsonArray.getJSONObject(i).getString("palabra");
+                                String significado = jsonArray.getJSONObject(i).getString("significado");
+                                int idioma = jsonArray.getJSONObject(i).getInt("idioma_id");
+                                int dificultad = jsonArray.getJSONObject(i).getInt("dificultad_id");
+
+                                palabrasAPI.add(new Palabra(palabra, significado, idioma, dificultad));
+                            }
+                            miAdapter.notifyDataSetChanged();
+                        } catch (Exception e) {
+                            Log.e("Vocabulario", "Error al parsear", e);
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError volleyError) {
+                        Log.e("Volley", "Error: " + volleyError.toString());
+                    }
+                }
+        );
+        VolleySingleton.getInstance(this).agregar(palabras);
 
         btnRegresar.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -38,12 +38,12 @@ public class FlascardActivity extends AppCompatActivity {
         tvPalabra = findViewById(R.id.tvPalabra);
 
         List<Palabra> lista = new ArrayList<>();
-        lista.add(new Palabra("Reporter","Reportero","Media","Inglés"));
-        lista.add(new Palabra("Waiter ","Mesero","Media","Inglés"));
-        lista.add(new Palabra("Taxi driver","Taxista","Media","Inglés"));
-        lista.add(new Palabra("Salesperson","Vendedor","Media","Inglés"));
-        lista.add(new Palabra("Breed","Criar","Difícil","Inglés"));
-        lista.add(new Palabra("Breeze","Brisa","Difícil","Inglés"));
+        lista.add(new Palabra("Reporter","Reportero"));
+        lista.add(new Palabra("Waiter ","Mesero"));
+        lista.add(new Palabra("Taxi driver","Taxista"));
+        lista.add(new Palabra("Salesperson","Vendedor"));
+        lista.add(new Palabra("Breed","Criar"));
+        lista.add(new Palabra("Breeze","Brisa"));
 
         Random rand = new Random();
         Palabra randItem = lista.get(rand.nextInt(lista.size()));

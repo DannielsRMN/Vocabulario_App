@@ -46,7 +46,16 @@ public class PalabraAdapter extends RecyclerView.Adapter<PalabraAdapter.PalabraV
     public void onBindViewHolder(@NonNull PalabraAdapter.PalabraViewHolder holder, int position) {
         Palabra palabra =listadoPalabras.get(position);
         holder.itemPalabra.setText(palabra.getPalabra());
-        holder.itemDificultad.setText(palabra.getDificultad());
+        int clave = palabra.getDificultad();
+        if (clave == 1){
+            holder.itemDificultad.setText("Inglés");
+        }
+        if(clave == 2){
+            holder.itemDificultad.setText("Francés");
+        }
+        if (clave == 3) {
+            holder.itemDificultad.setText("Portugués");
+        }
         holder.btnEscuchar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

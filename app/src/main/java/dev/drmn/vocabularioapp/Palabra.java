@@ -3,15 +3,15 @@ package dev.drmn.vocabularioapp;
 public class Palabra {
     private String palabra;
     private String significado;
-    private String dificultad;
-    private String idioma;
+    private int dificultad;
+    private int idioma;
 
-    public Palabra(String palabra, String dificultad) {
+    public Palabra(String palabra, String significado) {
         this.palabra = palabra;
-        this.dificultad = dificultad;
+        this.significado = significado;
     }
 
-    public Palabra(String palabra, String significado, String dificultad, String idioma) {
+    public Palabra(String palabra, String significado, int dificultad, int idioma) {
         this.palabra = palabra;
         this.significado = significado;
         this.dificultad = dificultad;
@@ -26,14 +26,6 @@ public class Palabra {
         this.palabra = palabra;
     }
 
-    public String getDificultad() {
-        return dificultad;
-    }
-
-    public void setDificultad(String dificultad) {
-        this.dificultad = dificultad;
-    }
-
     public String getSignificado() {
         return significado;
     }
@@ -42,11 +34,19 @@ public class Palabra {
         this.significado = significado;
     }
 
-    public String getIdioma() {
+    public int getDificultad() {
+        return dificultad;
+    }
+
+    public void setDificultad(int dificultad) {
+        this.dificultad = dificultad;
+    }
+
+    public int getIdioma() {
         return idioma;
     }
 
-    public void setIdioma(String idioma) {
+    public void setIdioma(int idioma) {
         this.idioma = idioma;
     }
 }
