@@ -11,26 +11,20 @@ El plan de avance nos permitirá conocer la distribución por porcentajes sobre 
 
 | Nro. | Requerimiento | Peso | Estado |
 | :---: | :--- | :---: | :---: |
-| 1 | Registrar usuario | 5% | Completo |
-| 2 | Iniciar sesión | 5% | Completo |
-| 3 | Cerrar sesión | 2% | Completo |
-| 4 | Elegir idioma | 2% | Completo |
-| 5 | Elegir dificultad | 2% | Completo |
-| 6 | Ver palabra | 2% | Completo |
-| 7 | Ver significado | 2% | Completo |
-| 8 | Listar palabras | 5% | Completo |
-| 9 | Reproducir pronunciación | 10% | Completo |
-| 10 | Ver historial semanal | 4% | Completo |
-| 11 | Ver progreso diario | 2% | Completo |
-| 12 | Responder ejercicio de escucha | 5% | Pendiente |
-| 13 | Retroalimentar ejercicio de escucha | 10% | Pendiente |
-| 14 | Registrar nueva palabra | 7% | Pendiente |
-| 15 | Registrar nuevo ejercicio de escucha | 7% | Pendiente |
-| 16 | Editar palabra | 10% | Pendiente | |
-| 17 | Editar ejercicio de escucha | 10% | Pendiente |
-| 18 | Eliminar palabra | 5% | Pendiente |
-| 19 | Eliminar ejercicio de escuchar | 5% | Pendiente |
-| | **Total** | **41%** | **En Progreso** |
+| 1 | Registrar usuario | 9% | Completo |
+| 2 | Iniciar sesión | 9% | Completo |
+| 3 | Cerrar sesión | 4% | Completo |
+| 4 | Elegir idioma | 4% | Completo |
+| 5 | Elegir dificultad | 3% | Completo |
+| 6 | Ver palabra | 3% | Completo |
+| 7 | Ver significado | 3% | Completo |
+| 8 | Listar palabras | 9% | Completo |
+| 9 | Reproducir pronunciación | 18% | Completo |
+| 10 | Ver historial semanal | 7% | Completo |
+| 11 | Ver progreso diario | 4% | Completo |
+| 12 | Responder ejercicio de escucha | 9% | Pendiente |
+| 13 | Retroalimentar ejercicio de escucha | 18% | Pendiente |
+| | **Total** | **73%** | **En Progreso** |
 
 ## Vistas Logradas
 ### 1. MainActivity (Login)
