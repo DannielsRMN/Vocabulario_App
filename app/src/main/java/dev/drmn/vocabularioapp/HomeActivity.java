@@ -181,7 +181,7 @@ public class HomeActivity extends AppCompatActivity {
         if (item.getTitle().equals("Cerrar Sesión")){
             Toast.makeText(this, "Cerrando Sesión", LENGTH_LONG).show();
             Intent iclose = new Intent(HomeActivity.this, MainActivity.class);
-            idCapturada = Integer.parseInt(null);
+            idCapturada = 0;
             startActivity(iclose);
         }
 

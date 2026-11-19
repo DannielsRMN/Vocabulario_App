@@ -60,10 +60,18 @@ public class PalabraAdapter extends RecyclerView.Adapter<PalabraAdapter.PalabraV
             @Override
             public void onClick(View v) {
                 if(tts != null){
+                    if (palabra.getIdioma() == 1){
+                        tts.setLanguage(Locale.US);
+                    }
+                    if (palabra.getIdioma() == 2){
+                        tts.setLanguage(Locale.FRANCE);
+                    }
+                    if (palabra.getIdioma() == 3){
+                        tts.setLanguage(Locale.forLanguageTag("pt-BR"));
+                    }
                     tts.speak(palabra.getPalabra(), TextToSpeech.QUEUE_FLUSH, null);
                     Log.i("TTS: ", "Escuando "+palabra.getPalabra());
                 }
-
                 Toast.makeText(v.getContext(), "Palabra: "+palabra.getPalabra(), LENGTH_SHORT).show();
             }
         });
