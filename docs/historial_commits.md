@@ -136,6 +136,132 @@ Se presentarán los commits según los entregables o hitos a resolver, actual
 ![alt text]({EE8B1428-C5B8-4F93-9783-F9D324ED4B99}.png)
 
 ## Hito Nro. 3 (17 Noviembre)
+### DOCS: Carga del Modelo relacional && Edición del ReadMe
 > Fecha y Hora: 17/11/2026 19:59
 
 ![alt text]({6558690E-BC13-446D-BBC7-38FBDA509F30}.png)
+
+### FEAT: Integración de Login con conexión a la API
+> Fecha y Hora: 18/11/2026 03:18
+
+![alt text]({6558690E-BC13-446D-BBC7-38FBDA509F30}.png)
+
+### FIX: Corrección en la aparición del mensaje de 'Crecenciales inválida' en el Login
+> Fecha y Hora: 18/11/2026 03:25
+
+![alt text]({34CA187B-F10D-4348-8D89-03797773635C}.png)
+
+### FIX: Corrección para hacer uso del patrón de diseño Singleton
+> Fecha y Hora: 18/11/2026 03:44
+
+![alt text]({AF488E35-7EA8-4B36-B550-5CB87B4F477D}.png)
+
+### FEAT: Integración de Registro de Usuarios con guardado en el API
+> Fecha y Hora: 18/11/2026 04:43
+
+![alt text]({2FEB6BDF-97F1-4152-9254-C362CCCA323A}.png)
+
+### FIX: Eliminación de dependencias no usadas en RegisterActivity & Paso del ID de MainActivity a ChooseActivity
+> Fecha y Hora: 18/11/2026 07:15
+
+![alt text]({D445A1C1-ADA7-4E3D-97B7-7CEC1FA754C4}.png)
+
+### FEAT: Integración de la selección del idioma y dificultad al iniciar sesión en la aplicación
+> Fecha y Hora: 18/11/2026 14:05
+
+![alt text]({6E7A985C-12A1-4B1A-B70D-B588A53CCA7A}.png)
+
+### FEAT: Integración de carga de la racha en HomeActivity mediante la API
+> Fecha y Hora: 18/11/2026 16:36
+
+![alt text]({0C568276-6260-41F7-B9A7-1349EBAB9BFF}.png)
+
+### FEAT: Integración de las peticiones al API para el historial del usuario
+> Fecha y Hora: 18/11/2026 20:57
+
+![alt text]({436E9915-0DF7-4881-AE68-DAC6DA32B022}.png)
+
+### FEAT: Integración de la lógica API para los detalles de la cuenta
+> Fecha y Hora: 18/11/2026 21:32
+
+![alt text]({6358F443-CFA8-4927-8DC5-CDF09F79DBDF}.png)
+
+### FEAT: Integración de vocabulario con consulta al API
+> Fecha y Hora: 18/11/2026 23:21
+
+![alt text]({F355E4AB-86B0-47AE-A451-1D23504896ED}.png)
+
+### DOCS: Reajuste del alcanse y proyecto && actualización del plan de avance
+> Fecha y Hora: 19/11/2026 01:19
+
+![alt text]({9EA77C3C-FE4D-4CD0-895F-1782CE662F61}.png)
+
+### FIX: Correción de comportamiento, se crea un progreso al registrar un usuario (Transacción)
+> Fecha y Hora: 19/11/2026 01:28
+
+![alt text]({30BD50C0-CF8D-4A61-8F4D-887E3EF84099}.png)
+
+### FIX: Correción de la posición en la captura de datos para la cuenta
+> Fecha y Hora: 19/11/2026 01:33
+
+![alt text]({70083E87-641B-4754-BDCC-633DF2FFD75F}.png)
+
+### FIX: Correción de dirección de 'Cerrar Sesión' && TTS Localizado para los 3 idiomas'
+> Fecha y Hora: 19/11/2026 01:56
+
+![alt text]({7BD8C63E-DBA3-48D1-B6B5-BD8E8D1062D4}.png)
+
+### FEAT: Integración de llamadas al API para las Flashcards
+> Fecha y Hora: 19/11/2026 02:25
+
+![alt text]({0F80D08E-0A77-4358-8939-F024589B639A}.png)
+
+### STYLE: Mejora estética del Login
+> Fecha y Hora: 19/11/2026 13:25
+
+![alt text]({EA5329B1-F5C7-4FF7-9441-C9C2166675AD}.png)
+
+### STYLE: Mejora estética del Register
+> Fecha y Hora: 19/11/2026 13:27
+
+![alt text]({40630062-3452-4529-BF7B-14C58966D0E7}.png)
+
+### STYLE: Mejora estética del Elección del Idioma y Dificultad
+> Fecha y Hora: 19/11/2026 13:28
+
+![alt text]({AC8B7321-0242-46CC-A414-C159428FF7BF}.png)
+
+### STYLE: Mejora visual a los Flashcards
+> Fecha y Hora: 19/11/2026 13:33
+
+![alt text]({2301F0C8-CC75-48FD-81B0-BFBD14AC098F}.png)
+
+### STYLE: Mejora visual de los ejercicios de Listening
+> Fecha y Hora: 19/11/2026 13:50
+
+![alt text]({4516231D-2CE7-4317-BFF8-951A185C7FA1}.png)
+
+### STYLE: Mejora gráfica de los detalles de la cuenta
+> Fecha y Hora: 19/11/2026 13:57
+
+![alt text]({B9A07093-DA1E-4D71-9E92-C6CF24F00364}.png)
+
+### STYLE: Mejora visual del vocabulario
+> Fecha y Hora: 19/11/2026 14:05
+
+![alt text]({E0C958EF-99AF-4543-A750-F872F1E0D352}.png)
+
+### STYLE: Correción del padding del historial
+> Fecha y Hora: 19/11/2026 14:06
+
+![alt text]({C4906F66-00C3-4DC3-8B14-C432BF4025C3}.png)
+
+### STYLE: Compresión y reducción de opciones en el MenuBar para mejorar la visualización del nombre del proyecto
+> Fecha y Hora: 19/11/2026 14:07
+
+![alt text]({B8E6EFF5-A35F-42B1-8586-B8751B7EB766}.png)
+
+### DOCS: Actualización completa de la documentación
+> Fecha y Hora: 19/11/2026 17:37
+
+![alt text]({1F8DB2DC-EB3F-4576-87D3-90A4AF2DA82B}.png)
