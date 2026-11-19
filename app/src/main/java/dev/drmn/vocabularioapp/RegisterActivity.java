@@ -79,12 +79,16 @@ public class RegisterActivity extends AppCompatActivity {
                                     @Override
                                     public void onResponse(String s) {
                                         Log.d("Volley", "Response: " + s);
+                                        Toast.makeText(RegisterActivity.this, "Usuario registrado.", LENGTH_SHORT).show();
+                                        startActivity(new Intent(RegisterActivity.this, MainActivity.class));
+                                        finish();
                                     }
                                 },
                                 new Response.ErrorListener() {
                                     @Override
                                     public void onErrorResponse(VolleyError volleyError) {
-                                        Log.e("Volley", "Error"+volleyError.getMessage());
+                                        Log.e("Volley", "Error: " + volleyError.toString());
+                                        Toast.makeText(RegisterActivity.this, "No se pudo registrar.", LENGTH_SHORT).show();
                                     }
                                 }
                         ){
