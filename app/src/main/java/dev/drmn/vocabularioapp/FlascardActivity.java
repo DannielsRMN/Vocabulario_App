@@ -1,6 +1,8 @@
 package dev.drmn.vocabularioapp;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -11,6 +13,14 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -20,6 +30,9 @@ public class FlascardActivity extends AppCompatActivity {
     Button btnMostrar, btnMix, btnVolver;
     TextView tvPalabra;
     String palabraMostrada = "";
+    List<Palabra> lista = new ArrayList<>();
+    String urlBase = "https://headpiece-grab-cornflake.ngrok-free.dev/api_server/";
+    Random rand = new Random();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,23 +45,49 @@ public class FlascardActivity extends AppCompatActivity {
             return insets;
         });
 
+        Intent captura = getIntent();
+        int idioma = captura.getIntExtra("idiomaID", 0);
+        int dificultad = captura.getIntExtra("dificultadID", 0);
+
         btnVolver = findViewById(R.id.btnVolver);
         btnMostrar = findViewById(R.id.btnMostrar);
         btnMix = findViewById(R.id.btnMix);
         tvPalabra = findViewById(R.id.tvPalabra);
 
-        List<Palabra> lista = new ArrayList<>();
-        lista.add(new Palabra("Reporter","Reportero"));
-        lista.add(new Palabra("Waiter ","Mesero"));
-        lista.add(new Palabra("Taxi driver","Taxista"));
-        lista.add(new Palabra("Salesperson","Vendedor"));
-        lista.add(new Palabra("Breed","Criar"));
-        lista.add(new Palabra("Breeze","Brisa"));
+        JsonArrayRequest request = new JsonArrayRequest(
+                Request.Method.GET,
+                urlBase + "palabra_filtrada.php?idioma_id=" + idioma + "&dificultad_id=" + dificultad,
+                null,
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray jsonArray) {
+                        try {
+                            for (int i = 0; i < jsonArray.length(); i++){
+                                String palabra = jsonArray.getJSONObject(i).getString("palabra");
+                                String significado = jsonArray.getJSONObject(i).getString("significado");
+                                int idioma = jsonArray.getJSONObject(i).getInt("idioma_id");
+                                int dificultad = jsonArray.getJSONObject(i).getInt("dificultad_id");
+                                lista.add(new Palabra(palabra, significado, idioma, dificultad));
+                            }
 
-        Random rand = new Random();
-        Palabra randItem = lista.get(rand.nextInt(lista.size()));
-        palabraMostrada = randItem.getPalabra().toString();
-        tvPalabra.setText(palabraMostrada);
+                            if (!lista.isEmpty()) {
+                                Palabra randItem = lista.get(rand.nextInt(lista.size()));
+                                palabraMostrada = randItem.getPalabra();
+                                tvPalabra.setText(palabraMostrada);
+                            }
+                        } catch (Exception e) {
+                            Log.e("Flashcard", "Error", e);
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError volleyError) {
+                        Log.e("Flashcard", "Error: " + volleyError.toString());
+                    }
+                }
+        );
+        VolleySingleton.getInstance(this).agregar(request);
 
         btnVolver.setOnClickListener(new View.OnClickListener() {
             @Override

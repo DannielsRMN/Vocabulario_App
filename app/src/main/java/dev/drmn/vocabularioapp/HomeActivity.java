@@ -157,6 +157,8 @@ public class HomeActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getTitle().equals("Flashcards")){
             Intent iflash = new Intent(HomeActivity.this, FlascardActivity.class);
+            iflash.putExtra("idiomaID", idiomaID);
+            iflash.putExtra("dificultadID", dificultadID);
             startActivity(iflash);
         }
 
