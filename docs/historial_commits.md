@@ -1,5 +1,5 @@
 # Historial de Commits
-Se presentarán los commits según los entregables o hitos a resolver, actual (Hito 2)
+Se presentarán los commits según los entregables o hitos a resolver, actual
 
 > Todas las horas se obtuvieron directamente de los commits y el historial del Android Studio.
 >![alt text]({604E2C9B-8C32-4B97-B693-AFB1086CE71F}.png)

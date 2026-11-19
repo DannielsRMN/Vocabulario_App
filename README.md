@@ -1,12 +1,19 @@
-﻿# Vocabulario_App
-## Historial de Commits
-![alt text]({8FCBF6A6-76AA-4AD3-8602-0B506444982F}.png)
-[Leer el historial de Commits](docs/historial_commits.md)
+﻿# ➔ Vocabulario_App
+Aplicación móvil para el aprendizaje de vocabulario mediante ejercicios interactivos.
 
-## Bitácora Semanal
-[Leer lecciones aprendidas](docs/bitácora_semanal.md)
+## ➔ Historial de Commits
+Los avances están completamente documentos en los siguientes enlaces.
+- [Ver commits del Hito 1](docs/historial_commits.md#hito-nro-1-05-noviembre)
+- [Ver commits del Hito 2](docs/historial_commits.md#hito-nro-2-10-noviembre)
+- [Ver commits del Hito 3](docs/historial_commits.md#hito-nro-3-17-noviembre)
 
-## Plan de Avance
+## ➔ Bitácora Semanal
+De igual forma se segmentará la bitácora de errores mediante los hitos.
+- [Leer lecciones aprendidas (Hito 1)](docs/bitácora_semanal.md#hito-nro-1)
+- [Leer lecciones aprendidas (Hito 2)](docs/bitácora_semanal.md#hito-nro-2)
+- [Leer lecciones aprendidas (Hito 3)](docs/bitácora_semanal.md#hito-nro-3)
+
+## ➔ Plan de Avance
 El plan de avance nos permitirá conocer la distribución por porcentajes sobre el avance según de los requerimientos funcionales.
 
 | Nro. | Requerimiento | Peso | Estado |
@@ -26,27 +33,44 @@ El plan de avance nos permitirá conocer la distribución por porcentajes sobre 
 | 13 | Retroalimentar ejercicio de escucha | 18% | Pendiente |
 | | **Total** | **73%** | **En Progreso** |
 
-## Vistas Logradas
+## ➔ Tablero de Tareas
+El progreso se presentará mediante una tabla para verificar los avances correspondientes.
+
+| Estado | Cantidad |
+| :--- | :---: |
+| ✅ Completado | 11 |
+| 🔄 En progreso | 0 |
+| ⏳ Pendiente | 2 |
+| **Total** | **13** |
+
+![alt text]({BCC03E70-FF38-4351-B8CD-021DF00C7BDA}.png)
+
+[Project de VocabularyApp](https://github.com/users/DannielsRMN/projects/1)
+
+## ➔ Vistas Logradas
 ### 1. MainActivity (Login)
-![alt text]({04C96EE5-8B14-4EEF-AAD3-AE45712D8AA0}.png)
-
-### 2. ChooseActivity (Para Idioma y Dificultad)
-![alt text]({82CADE50-BC16-4A4A-8E5A-9F819236D12B}.png)
-
-### 3. RegisterActivity
 ![alt text](image.png)
 
+### 2. ChooseActivity (Para Idioma y Dificultad)
+![alt text](image-2.png)
+
+### 3. RegisterActivity
+![alt text](image-1.png)
+
 ### 4. HomeActivity
-![alt text]({0B5AF90F-D510-47D6-95E5-D4B95B60D610}.png)
+![alt text](image-3.png)
 
 ### 5. Flashcards
-![alt text]({030E9B77-2278-4F7A-A7CB-7DDD41A12CAA}.png)
+![alt text](image-4.png)
 
 ### 6. Ejercicios de Escucha
-![alt text]({8841FFE6-6349-48C0-AED6-5205EB893A72}.png)
+![alt text](image-5.png)
 
 ### 7. Vocabulario (Escucha de Pronunciación)
-![alt text]({B28734E3-21C2-43E1-BA54-975879E23EB3}.png)
+![alt text](image-6.png)
 
 ### 8. Información de la cuenta
-![alt text]({FB2021B7-93EE-44F7-A22E-29F60C544B13}.png)
+![alt text](image-7.png)
+
+## ➔ Video de Presentación
+[![Video demostrativo del Hito 3](https://img.youtube.com/vi/JaeZFHh8OvA/maxresdefault.jpg)](https://www.youtube.com/watch?v=JaeZFHh8OvA)   
