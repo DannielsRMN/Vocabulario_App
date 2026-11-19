@@ -59,10 +59,10 @@ public class AccountActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(JSONArray jsonArray) {
                         try {
-                            String nombre = jsonArray.getJSONObject(id_Capturada).getString("nombre");
-                            String apellidos = jsonArray.getJSONObject(id_Capturada).getString("apellidos");
-                            String fechaNacimiento = jsonArray.getJSONObject(id_Capturada).getString("fecha_nacimiento");
-                            String correoElectronico = jsonArray.getJSONObject(id_Capturada).getString("correo_electronico");
+                            String nombre = jsonArray.getJSONObject(id_Capturada - 1).getString("nombre");
+                            String apellidos = jsonArray.getJSONObject(id_Capturada - 1).getString("apellidos");
+                            String fechaNacimiento = jsonArray.getJSONObject(id_Capturada - 1).getString("fecha_nacimiento");
+                            String correoElectronico = jsonArray.getJSONObject(id_Capturada - 1).getString("correo_electronico");
 
                             tvNombre.setText(nombre);
                             tvApellidos.setText(apellidos);
