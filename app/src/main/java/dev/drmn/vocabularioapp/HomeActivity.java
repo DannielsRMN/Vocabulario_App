@@ -42,6 +42,7 @@ public class HomeActivity extends AppCompatActivity {
     String urlBase = "https://headpiece-grab-cornflake.ngrok-free.dev/api_server/";
     String rachaStr = "";
     List<HistorialSemanal> historials = new ArrayList<>();
+    int idCapturada;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -158,12 +159,14 @@ public class HomeActivity extends AppCompatActivity {
 
         if (item.getTitle().equals("Cuenta")){
             Intent iaccount = new Intent(HomeActivity.this, AccountActivity.class);
+            iaccount.putExtra("idUsuario", idCapturada);
             startActivity(iaccount);
         }
 
         if (item.getTitle().equals("Cerrar Sesión")){
             Toast.makeText(this, "Cerrando Sesión", LENGTH_LONG).show();
             Intent iclose = new Intent(HomeActivity.this, MainActivity.class);
+            idCapturada = Integer.parseInt(null);
             startActivity(iclose);
         }
 
