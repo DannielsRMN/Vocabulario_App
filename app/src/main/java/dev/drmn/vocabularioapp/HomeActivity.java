@@ -41,6 +41,7 @@ public class HomeActivity extends AppCompatActivity {
     RecyclerView.Adapter homeAdapter;
     String urlBase = "https://headpiece-grab-cornflake.ngrok-free.dev/api_server/";
     String rachaStr = "";
+    List<HistorialSemanal> historials = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +62,9 @@ public class HomeActivity extends AppCompatActivity {
         rvHome = findViewById(R.id.rvHistorialSemanal);
         layoutManagerHome = new LinearLayoutManager(this);
         rvHome.setLayoutManager(layoutManagerHome);
+
+        homeAdapter = new HistorialAdapter(this, historials);
+        rvHome.setAdapter(homeAdapter);
 
         Intent usuarioDetalle = getIntent();
         int idCapturada = usuarioDetalle.getIntExtra("idUsuario", 0);
@@ -95,14 +99,37 @@ public class HomeActivity extends AppCompatActivity {
                     }
                 }
         );
+        JsonArrayRequest historialRequest = new JsonArrayRequest(
+                Request.Method.GET,
+                urlBase + "historial.php?usuario_id=" + idCapturada,
+                null,
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray jsonArray) {
+                        Log.d("Historial", "Recibido: " + jsonArray);
+                        try {
+                            for (int i=0; i < jsonArray.length(); i++){
+                                JSONObject o = jsonArray.getJSONObject(i);
+                                String tipo = o.getString("tipo");
+                                String registro = o.getString("registro");
+                                LocalDate fecha = LocalDate.parse(o.getString("tiempo").substring(0, 10));
+                                historials.add(new HistorialSemanal(tipo, fecha, registro));
+                            }
+                            homeAdapter.notifyDataSetChanged();
+                        } catch (Exception e){
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError volleyError) {
+                        Log.e("Volley", "Error: " + volleyError.toString());
+                    }
+                }
+        );
         VolleySingleton.getInstance(this).agregar(progresoRequest);
-
-        List<HistorialSemanal> historials = new ArrayList<>();
-        historials.add(new HistorialSemanal("Vocabulary", LocalDate.of(2003,12,13), "Se practico vocabulario mediante flashcards"));
-        historials.add(new HistorialSemanal("Exercices", LocalDate.of(2013,03,28), "Se practicaron ejercicios de listening"));
-
-        homeAdapter = new HistorialAdapter(this, historials);
-        rvHome.setAdapter(homeAdapter);
+        VolleySingleton.getInstance(this).agregar(historialRequest);
     }
 
     @Override
