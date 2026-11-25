@@ -170,6 +170,8 @@ public class HomeActivity extends AppCompatActivity {
 
         if (item.getTitle().equals("Exercices")){
             Intent iexercices = new Intent(HomeActivity.this, ExercicesActivity.class);
+            iexercices.putExtra("idiomaID", idiomaID);
+            iexercices.putExtra("dificultadID", dificultadID);
             iexercices.putExtra("idUsuario", idCapturada);
             startActivity(iexercices);
         }
