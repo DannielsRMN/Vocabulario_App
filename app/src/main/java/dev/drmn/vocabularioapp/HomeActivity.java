@@ -4,7 +4,6 @@ import static android.widget.Toast.LENGTH_LONG;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.ranging.RangingManager;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -147,6 +146,12 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onRestart() {
+        super.onRestart();
+        recreate();
+    }
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu, menu);
@@ -159,11 +164,13 @@ public class HomeActivity extends AppCompatActivity {
             Intent iflash = new Intent(HomeActivity.this, FlascardActivity.class);
             iflash.putExtra("idiomaID", idiomaID);
             iflash.putExtra("dificultadID", dificultadID);
+            iflash.putExtra("idUsuario", idCapturada);
             startActivity(iflash);
         }
 
         if (item.getTitle().equals("Exercices")){
             Intent iexercices = new Intent(HomeActivity.this, ExercicesActivity.class);
+            iexercices.putExtra("idUsuario", idCapturada);
             startActivity(iexercices);
         }
 
@@ -171,6 +178,7 @@ public class HomeActivity extends AppCompatActivity {
             Intent ivoca = new Intent(HomeActivity.this, VocabularyActivity.class);
             ivoca.putExtra("idiomaID", idiomaID);
             ivoca.putExtra("dificultadID", dificultadID);
+            ivoca.putExtra("idUsuario", idCapturada);
             startActivity(ivoca);
         }
 

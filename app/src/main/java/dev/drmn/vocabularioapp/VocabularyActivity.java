@@ -18,12 +18,15 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.StringRequest;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class VocabularyActivity extends AppCompatActivity {
 
@@ -59,6 +62,33 @@ public class VocabularyActivity extends AppCompatActivity {
         Intent captura = getIntent();
         idioma_filtro = captura.getIntExtra("idiomaID", -1);
         dificultad_filtro = captura.getIntExtra("dificultadID",     -1);
+        int idUsuario = captura.getIntExtra("idUsuario", -1);
+
+        StringRequest eventoRequest = new StringRequest(
+                Request.Method.POST,
+                urlBase + "historial.php",
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        Log.d("Evento", response);
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.e("Evento", error.toString());
+                    }
+                }
+        ) {
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<>();
+                params.put("usuario_id", String.valueOf(idUsuario));
+                params.put("tipo", "Vocabulary");
+                params.put("registro", "Practicó nuevas palabras.");
+                return params;
+            }
+        };
 
         JsonArrayRequest palabras = new JsonArrayRequest(
                 Request.Method.GET,
@@ -91,6 +121,7 @@ public class VocabularyActivity extends AppCompatActivity {
                 }
         );
         VolleySingleton.getInstance(this).agregar(palabras);
+        VolleySingleton.getInstance(this).agregar(eventoRequest);
 
         btnRegresar.setOnClickListener(new View.OnClickListener() {
             @Override

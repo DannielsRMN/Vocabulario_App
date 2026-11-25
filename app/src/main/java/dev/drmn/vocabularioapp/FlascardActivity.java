@@ -17,12 +17,15 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.StringRequest;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 public class FlascardActivity extends AppCompatActivity {
@@ -48,11 +51,38 @@ public class FlascardActivity extends AppCompatActivity {
         Intent captura = getIntent();
         int idioma = captura.getIntExtra("idiomaID", 0);
         int dificultad = captura.getIntExtra("dificultadID", 0);
+        int idUsuario = captura.getIntExtra("idUsuario", 0);
 
         btnVolver = findViewById(R.id.btnVolver);
         btnMostrar = findViewById(R.id.btnMostrar);
         btnMix = findViewById(R.id.btnMix);
         tvPalabra = findViewById(R.id.tvPalabra);
+
+        StringRequest eventoRequest = new StringRequest(
+                Request.Method.POST,
+                urlBase + "historial.php",
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String s) {
+                        Log.d("Evento", s);
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError volleyError) {
+                        Log.e("Evento", volleyError.toString());
+                    }
+                }
+        ){
+            @Override
+            protected Map<String, String> getParams(){
+                Map<String, String> params = new HashMap<>();
+                params.put("usuario_id", String.valueOf(idUsuario));
+                params.put("tipo", "Flashcards");
+                params.put("registro", "Inició a practicar con flashcards.");
+                return params;
+            }
+        };
 
         JsonArrayRequest request = new JsonArrayRequest(
                 Request.Method.GET,
@@ -88,6 +118,7 @@ public class FlascardActivity extends AppCompatActivity {
                 }
         );
         VolleySingleton.getInstance(this).agregar(request);
+        VolleySingleton.getInstance(this).agregar(eventoRequest);
 
         btnVolver.setOnClickListener(new View.OnClickListener() {
             @Override
